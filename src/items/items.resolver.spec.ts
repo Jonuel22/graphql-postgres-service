@@ -1,12 +1,26 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ItemsResolver } from './items.resolver';
+import { ItemsService } from './items.service';
 
 describe('ItemsResolver', () => {
   let resolver: ItemsResolver;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [ItemsResolver],
+      providers: [
+        ItemsResolver,
+        {
+          provide: ItemsService,
+          useValue: {
+            // Mockea las funciones que usa el resolver
+            findAll: jest.fn(),
+            findOne: jest.fn(),
+            create: jest.fn(),
+            update: jest.fn(),
+            remove: jest.fn(),
+          },
+        },
+      ],
     }).compile();
 
     resolver = module.get<ItemsResolver>(ItemsResolver);
@@ -15,4 +29,6 @@ describe('ItemsResolver', () => {
   it('should be defined', () => {
     expect(resolver).toBeDefined();
   });
+
+  // Añade más pruebas aquí
 });
