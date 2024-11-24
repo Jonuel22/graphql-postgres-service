@@ -59,4 +59,4 @@ jobs:
           app-name: 'my-graphql-app'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C274FC375CAF4A70A209CC8A4D6846B4 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1E8D9C93670640E6A3882BB1AA54E1A1 }}
